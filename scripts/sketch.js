@@ -6,7 +6,7 @@
 
   HEIGHT = 480;
 
-  SPEED = 4;
+  SPEED = 8;
 
   CELL_SIZE = 4;
 
@@ -56,8 +56,8 @@
   };
 
   this.BOX = {
-    CYAN: ["MOVE", "WHITE", "MOVE", "WHITE", "MOVE", "WHITE", "RIGHT", "MOVE", "WHITE", "MOVE", "WHITE", "MOVE", "WHITE", "RIGHT", "MOVE", "WHITE", "MOVE", "WHITE", "MOVE", "WHITE", "RIGHT", "MOVE", "WHITE", "MOVE", "WHITE", "MOVE", "WHITE"],
-    WHITE: ["MOVE", "CYAN", "MOVE", "CYAN", "MOVE", "BLACK", "RIGHT", "MOVE", "CYAN", "MOVE", "CYAN", "MOVE", "BLACK", "RIGHT", "MOVE", "CYAN", "MOVE", "CYAN", "MOVE", "BLACK", "RIGHT", "MOVE", "CYAN", "MOVE", "CYAN", "MOVE", "BLACK"]
+    WHITE: ["MOVE", "CYAN", "MOVE", "CYAN", "MOVE", "CYAN", "RIGHT", "MOVE", "CYAN", "MOVE", "CYAN", "MOVE", "CYAN", "RIGHT", "MOVE", "CYAN", "MOVE", "CYAN", "MOVE", "CYAN", "RIGHT", "MOVE", "CYAN", "MOVE", "CYAN", "MOVE", "CYAN", "RIGHT"],
+    CYAN: ["MOVE", "BLACK", "RIGHT", "MOVE", "BLACK", "RIGHT", "MOVE", "BLACK", "RIGHT", "MOVE", "BLACK"]
   };
 
   this.BEE = {
@@ -78,6 +78,15 @@
     GREEN: ["MAGENTA", "MOVE"]
   };
 
+  this.LINE = {
+    WHITE: ["GREEN"],
+    GREEN: ["MOVE"],
+    BLACK: ["RIGHT", "MOVE", "MOVE"],
+    YELLOW: ["LEFT", "MOVE", "MOVE"],
+    MAGENTA: ["LEFT", "LEFT", "MOVE"],
+    CYAN: ["RIGHT", "RIGHT", "MOVE"]
+  };
+
   this.RULES = {
     langton: LANGTON,
     blue_green: BLUE_GREEN,
@@ -87,7 +96,8 @@
     box: BOX,
     bee: BEE,
     green: GREEN,
-    anti_green: ANTI_GREEN
+    anti_green: ANTI_GREEN,
+    line: LINE
   };
 
   this.DEFAULT_RULES = ['MOVE'];

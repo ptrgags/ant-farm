@@ -1,6 +1,6 @@
 WIDTH = 640
 HEIGHT = 480
-SPEED = 4
+SPEED = 8
 CELL_SIZE = 4
 ROWS = Math.floor(HEIGHT / CELL_SIZE)
 COLS = Math.floor(WIDTH / CELL_SIZE)
@@ -42,17 +42,15 @@ type = 'langton'
     MAGENTA: ["LEFT", "BLUE", "MOVE", "RIGHT", "GREEN", "MOVE"]
 
 @BOX =
-    CYAN: [
-        "MOVE", "WHITE", "MOVE", "WHITE", "MOVE", "WHITE", "RIGHT",
-        "MOVE", "WHITE", "MOVE", "WHITE", "MOVE", "WHITE", "RIGHT",
-        "MOVE", "WHITE", "MOVE", "WHITE", "MOVE", "WHITE", "RIGHT",
-        "MOVE", "WHITE", "MOVE", "WHITE", "MOVE", "WHITE"
-    ]
     WHITE: [
-        "MOVE", "CYAN", "MOVE", "CYAN", "MOVE", "BLACK", "RIGHT",
-        "MOVE", "CYAN", "MOVE", "CYAN", "MOVE", "BLACK", "RIGHT",
-        "MOVE", "CYAN", "MOVE", "CYAN", "MOVE", "BLACK", "RIGHT",
-        "MOVE", "CYAN", "MOVE", "CYAN", "MOVE", "BLACK"
+        "MOVE", "CYAN", "MOVE", "CYAN", "MOVE", "CYAN", "RIGHT",
+        "MOVE", "CYAN", "MOVE", "CYAN", "MOVE", "CYAN", "RIGHT",
+        "MOVE", "CYAN", "MOVE", "CYAN", "MOVE", "CYAN", "RIGHT",
+        "MOVE", "CYAN", "MOVE", "CYAN", "MOVE", "CYAN", "RIGHT"
+    ]
+    CYAN: [
+        "MOVE", "BLACK", "RIGHT", "MOVE", "BLACK", "RIGHT",
+        "MOVE", "BLACK", "RIGHT", "MOVE", "BLACK"
     ]
 
 @BEE =
@@ -70,6 +68,14 @@ type = 'langton'
     MAGENTA: ["RIGHT", "WHITE", "MOVE"]
     GREEN: ["MAGENTA", "MOVE"]
 
+@LINE =
+    WHITE: ["GREEN"]
+    GREEN: ["MOVE"]
+    BLACK: ["RIGHT", "MOVE", "MOVE"]
+    YELLOW: ["LEFT", "MOVE", "MOVE"]
+    MAGENTA: ["LEFT", "LEFT", "MOVE"]
+    CYAN: ["RIGHT", "RIGHT", "MOVE"]
+
 @RULES =
     langton: LANGTON
     blue_green: BLUE_GREEN
@@ -80,6 +86,7 @@ type = 'langton'
     bee: BEE
     green: GREEN
     anti_green: ANTI_GREEN
+    line: LINE
 
 @DEFAULT_RULES = ['MOVE']
 
