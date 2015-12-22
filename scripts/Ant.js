@@ -20,7 +20,7 @@
       this.orientation = orientation;
       this.grid = grid;
       this.rules = rules;
-      this.default_rules = default_rules;
+      this.default_rules = default_rules != null ? default_rules : [];
     }
 
     Ant.prototype.turn = function(amount) {

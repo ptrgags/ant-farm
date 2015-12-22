@@ -16,7 +16,7 @@ class @Ant
         YELLOW: '#FFFF00'
         MAGENTA: '#FF00FF'
 
-    constructor: (@row, @col, @orientation, @grid, @rules, @default_rules) ->
+    constructor: (@row, @col, @orientation, @grid, @rules, @default_rules=[]) ->
 
     turn: (amount) ->
         @orientation += amount
