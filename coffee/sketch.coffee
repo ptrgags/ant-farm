@@ -41,12 +41,45 @@ type = 'langton'
     CYAN: ["LEFT", "BLUE", "MOVE", "RIGHT", "GREEN", "MOVE"]
     MAGENTA: ["LEFT", "BLUE", "MOVE", "RIGHT", "GREEN", "MOVE"]
 
+@BOX =
+    CYAN: [
+        "MOVE", "WHITE", "MOVE", "WHITE", "MOVE", "WHITE", "RIGHT",
+        "MOVE", "WHITE", "MOVE", "WHITE", "MOVE", "WHITE", "RIGHT",
+        "MOVE", "WHITE", "MOVE", "WHITE", "MOVE", "WHITE", "RIGHT",
+        "MOVE", "WHITE", "MOVE", "WHITE", "MOVE", "WHITE"
+    ]
+    WHITE: [
+        "MOVE", "CYAN", "MOVE", "CYAN", "MOVE", "BLACK", "RIGHT",
+        "MOVE", "CYAN", "MOVE", "CYAN", "MOVE", "BLACK", "RIGHT",
+        "MOVE", "CYAN", "MOVE", "CYAN", "MOVE", "BLACK", "RIGHT",
+        "MOVE", "CYAN", "MOVE", "CYAN", "MOVE", "BLACK"
+    ]
+
+@BEE =
+    WHITE: ["LEFT", "BLACK", "MOVE"]
+    BLACK: ["RIGHT", "YELLOW", "MOVE"]
+    YELLOW: ["LEFT", "WHITE", "MOVE"]
+
+@GREEN =
+    WHITE: ["LEFT", "GREEN", "MOVE"]
+    GREEN: ["RIGHT", "WHITE", "MOVE"]
+    MAGENTA: ["GREEN", "MOVE"]
+
+@ANTI_GREEN =
+    WHITE: ["LEFT", "MAGENTA", "MOVE"]
+    MAGENTA: ["RIGHT", "WHITE", "MOVE"]
+    GREEN: ["MAGENTA", "MOVE"]
+
 @RULES =
     langton: LANGTON
     blue_green: BLUE_GREEN
     rainbow: RAINBOW
     fire: FIRE
     fast: FAST
+    box: BOX
+    bee: BEE
+    green: GREEN
+    anti_green: ANTI_GREEN
 
 @DEFAULT_RULES = ['MOVE']
 
