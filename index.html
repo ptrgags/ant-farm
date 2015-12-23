@@ -26,6 +26,10 @@
             left: 640;
             z-index: 10;
         }
+        #custom {
+            position: absolute;
+            left: 900;
+        }
     </style>
 </head>
 <body>
@@ -59,17 +63,16 @@
             <label><input type="radio" name="anttype" value="green">Green Ant</label>
         </div>
         <div class="radio">
-            <label><input type="radio" name="anttype" value="anti_green">Anti-Green Ant (Use with Green Ant)</label>
+            <label><input type="radio" name="anttype" value="anti_green">Anti-Green Ant</label>
         </div>
         <div class="radio">
             <label><input type="radio" name="anttype" value="line">Line Ant</label>
         </div>
-        <!-- The world is not ready for this
-        <div class="radio disabled">
+        <div class="radio">
             <label><input type="radio" name="anttype" value="custom">Custom</label>
-        </div> -->
-        <!-- Custom Ant stuff:
-        <hr/>
+        </div>
+    </div>
+    <div id="custom">
         <h2>Custom Ant Rules</h2>
         <table class="table">
             <tr>
@@ -78,74 +81,78 @@
             </tr>
             <tr>
                 <td>
-                    <label class="radio-inline"><input type="radio" name="input-color" checked="checked">White</label>
+                    <label class="radio-inline"><input type="radio" name="input-color" value="WHITE" checked="checked">White</label>
                 </td>
                 <td id="action-white"></td>
             </tr>
             <tr>
                 <td>
-                    <label class="radio-inline"><input type="radio" name="input-color">Black</label>
+                    <label class="radio-inline"><input type="radio" name="input-color" value="BLACK">Black</label>
                 </td>
                 <td id="action-black"></td>
             </tr>
             <tr>
                 <td>
-                    <label class="radio-inline"><input type="radio" name="input-color">Red</label>
+                    <label class="radio-inline"><input type="radio" name="input-color" value="RED">Red</label>
                 </td>
                 <td id="action-red"></td>
             </tr>
             <tr>
                 <td>
-                    <label class="radio-inline"><input type="radio" name="input-color">Green</label>
+                    <label class="radio-inline"><input type="radio" name="input-color" value="GREEN">Green</label>
                 </td>
                 <td id="action-green"></td>
             </tr>
             <tr>
                 <td>
-                    <label class="radio-inline"><input type="radio" name="input-color">Blue</label>
+                    <label class="radio-inline"><input type="radio" name="input-color" value="BLUE">Blue</label>
                 </td>
                 <td id="action-blue"></td>
             </tr>
             <tr>
                 <td>
-                    <label class="radio-inline"><input type="radio" name="input-color">Cyan</label>
+                    <label class="radio-inline"><input type="radio" name="input-color" value="CYAN">Cyan</label>
                 </td>
                 <td id="action-cyan"></td>
             </tr>
             <tr>
                 <td>
-                    <label class="radio-inline"><input type="radio" name="input-color">Magenta</label>
+                    <label class="radio-inline"><input type="radio" name="input-color" value="MAGENTA">Magenta</label>
                 </td>
                 <td id="action-magenta"></td>
             </tr>
             <tr>
                 <td>
-                    <label class="radio-inline"><input type="radio" name="input-color">Yellow</label>
+                    <label class="radio-inline"><input type="radio" name="input-color" value="YELLOW">Yellow</label>
                 </td>
                 <td id="action-yellow"></td>
             </tr>
             <tr>
                 <td>
-                    <label class="radio-inline"><input type="radio" name="input-color">Default</label>
+                    <label class="radio-inline"><input type="radio" name="input-color" value="DEFAULT">Default</label>
                 </td>
                 <td id="action-yellow"></td>
             </tr>
         </table>
+        <p>Use the buttons below to customize the currently selected rule list!</p>
         <h3>Set Current Cell Color</h3>
-        <button class="btn btn-default">white</button>
-        <button class="btn btn-default">black</button>
-        <button class="btn btn-default">red</button>
-        <button class="btn btn-default">green</button>
-        <button class="btn btn-default">blue</button>
-        <button class="btn btn-default">cyan</button>
-        <button class="btn btn-default">magenta</button>
-        <button class="btn btn-default">yellow</button>
+        <button id="command-white" class="btn btn-default">white</button>
+        <button id="command-black" class="btn btn-default">black</button>
+        <button id="command-red" class="btn btn-default">red</button>
+        <button id="command-green" class="btn btn-default">green</button>
+        <button id="command-blue" class="btn btn-default">blue</button>
+        <button id="command-cyan" class="btn btn-default">cyan</button>
+        <button id="command-magenta" class="btn btn-default">magenta</button>
+        <button id="command-yellow" class="btn btn-default">yellow</button>
         <hr/>
         <h3>Movement</h3>
-        <button class="btn btn-default">Forward</button>
-        <button class="btn btn-default">Turn Left</button>
-        <button class="btn btn-default">Turn Right</button>
-    -->
+        <button id="command-forward" class="btn btn-default">Move Forward</button>
+        <button id="command-left" class="btn btn-default">Turn Left</button>
+        <button id="command-right" class="btn btn-default">Turn Right</button>
+        <hr/>
+        <h3>Other</h3>
+        <button id="command-clear" class="btn btn-default">Clear Selected Action</button>
+        <button id="command-clear-last" class="btn btn-default">Remove Last Action</button>
     </div>
 </body>
 </html>
