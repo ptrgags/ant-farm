@@ -62,12 +62,19 @@
     return results;
   };
 
+  this.update_selected_code = function() {
+    ANT_CODES.custom_ant = custom_rules.encode();
+    return $('#selected-ant').html(ANT_CODES[type]);
+  };
+
   this.onload = function() {
     var append_rule, color;
-    update_rules(type);
+    update_rules();
+    update_selected_code();
     $('input[name=anttype]').change(function(e) {
       type = e.target.value;
-      return update_rules(type);
+      update_rules();
+      return update_selected_code();
     });
     $('input[name=input-color]').change(function(e) {
       return custom_color = e.target.value;
@@ -93,7 +100,8 @@
     append_rule = function(rule) {
       return function() {
         custom_rules[custom_color].push(rule);
-        return update_rules();
+        update_rules();
+        return update_selected_code();
       };
     };
     for (color in AntRules.COLOR_CODES) {
@@ -104,11 +112,18 @@
     $('#command-right').click(append_rule("right"));
     $('#command-clear').click(function() {
       custom_rules[custom_color].length = 0;
-      return update_rules();
+      update_rules();
+      return update_selected_code();
     });
-    return $('#command-clear-last').click(function() {
+    $('#command-clear-last').click(function() {
       custom_rules[custom_color].pop();
-      return update_rules();
+      update_rules();
+      return update_selected_code();
+    });
+    return $('#command-load').click(function() {
+      custom_rules.decode(prompt("Enter an ant code:", "3800"));
+      update_rules();
+      return update_selected_code();
     });
   };
 

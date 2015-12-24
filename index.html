@@ -31,6 +31,15 @@
             position: absolute;
             left: 900;
         }
+        #info {
+            position: absolute;
+            top: 480;
+            width: 660;
+        }
+
+        #selected-ant {
+            word-wrap: break-word;
+        }
     </style>
 </head>
 <body>
@@ -145,15 +154,17 @@
         <button id="command-cyan" class="btn btn-default">cyan</button>
         <button id="command-magenta" class="btn btn-default">magenta</button>
         <button id="command-yellow" class="btn btn-default">yellow</button>
-        <hr/>
         <h3>Movement</h3>
         <button id="command-forward" class="btn btn-default">Move Forward</button>
         <button id="command-left" class="btn btn-default">Turn Left</button>
         <button id="command-right" class="btn btn-default">Turn Right</button>
-        <hr/>
         <h3>Other</h3>
         <button id="command-clear" class="btn btn-default">Clear Selected Action</button>
         <button id="command-clear-last" class="btn btn-default">Remove Last Action</button>
+        <button id="command-load" class="btn btn-default">Load Ant from Code</button>
+    </div>
+    <div id="info">
+        <p>Selected Ant Code: (For pasting into the 'Load Ant from Code' dialog)<pre id="selected-ant"></pre></p>
     </div>
 </body>
 </html>

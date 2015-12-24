@@ -28,14 +28,21 @@ custom_rules = new AntRules()
 
 @update_rules = (type) ->
     $('td[id|=action]').html ""
-    #rules = new AntRules().decode(ANT_CODES[type])
     for key of AntRules.COLOR_CODES
         $('#action-' + key).html(custom_rules[key]?.join ",")
+
+@update_selected_code = ->
+    ANT_CODES.custom_ant = custom_rules.encode()
+    $('#selected-ant').html ANT_CODES[type]
+
 @onload = ->
-    update_rules type
+    update_rules()
+    update_selected_code()
+
     $('input[name=anttype]').change (e) ->
         type = e.target.value
-        update_rules type
+        update_rules()
+        update_selected_code()
     $('input[name=input-color]').change (e) ->
         custom_color = e.target.value
     $('#clear').click ->
@@ -46,6 +53,7 @@ custom_rules = new AntRules()
         return ->
             custom_rules[custom_color].push rule
             update_rules()
+            update_selected_code()
 
     for color of AntRules.COLOR_CODES
         $("#command-#{color}").click append_rule(color)
@@ -56,10 +64,15 @@ custom_rules = new AntRules()
     $('#command-clear').click ->
         custom_rules[custom_color].length = 0
         update_rules()
+        update_selected_code()
     $('#command-clear-last').click ->
         custom_rules[custom_color].pop()
         update_rules()
-
+        update_selected_code()
+    $('#command-load').click ->
+        custom_rules.decode(prompt("Enter an ant code:", "3800"))
+        update_rules()
+        update_selected_code()
 @setup = ->
     createCanvas WIDTH, HEIGHT
     noStroke()
