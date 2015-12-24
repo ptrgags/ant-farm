@@ -30,13 +30,13 @@
         #custom {
             position: absolute;
             left: 900;
+            width: 640
         }
         #info {
             position: absolute;
             top: 480;
             width: 660;
         }
-
         #selected-ant {
             word-wrap: break-word;
         }
@@ -82,12 +82,12 @@
             <label><input type="radio" name="anttype" value="custom_ant">Custom</label>
         </div>
     </div>
-    <div id="custom">
-        <h2>Custom Ant Rules</h2>
+    <div id="custom" class="hidden">
+        <h3>Custom Ant Rules</h3>
         <table class="table">
             <tr>
-                <th>Current Cell Color</th>
-                <th>Action</th>
+                <th>When ant is on <br/> a ___ cell</th>
+                <th>Do these actions:</th>
             </tr>
             <tr>
                 <td>

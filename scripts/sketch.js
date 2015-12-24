@@ -57,7 +57,7 @@
     $('td[id|=action]').html("");
     results = [];
     for (key in AntRules.COLOR_CODES) {
-      results.push($('#action-' + key).html((ref = custom_rules[key]) != null ? ref.join(",") : void 0));
+      results.push($('#action-' + key).html((ref = custom_rules[key]) != null ? ref.join(", ") : void 0));
     }
     return results;
   };
@@ -74,7 +74,12 @@
     $('input[name=anttype]').change(function(e) {
       type = e.target.value;
       update_rules();
-      return update_selected_code();
+      update_selected_code();
+      if (type === "custom_ant") {
+        return $('#custom').removeClass('hidden');
+      } else {
+        return $('#custom').addClass('hidden');
+      }
     });
     $('input[name=input-color]').change(function(e) {
       return custom_color = e.target.value;

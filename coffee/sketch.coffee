@@ -29,7 +29,7 @@ custom_rules = new AntRules()
 @update_rules = (type) ->
     $('td[id|=action]').html ""
     for key of AntRules.COLOR_CODES
-        $('#action-' + key).html(custom_rules[key]?.join ",")
+        $('#action-' + key).html(custom_rules[key]?.join ", ")
 
 @update_selected_code = ->
     ANT_CODES.custom_ant = custom_rules.encode()
@@ -43,6 +43,10 @@ custom_rules = new AntRules()
         type = e.target.value
         update_rules()
         update_selected_code()
+        if type is "custom_ant"
+            $('#custom').removeClass('hidden')
+        else
+            $('#custom').addClass('hidden')
     $('input[name=input-color]').change (e) ->
         custom_color = e.target.value
     $('#clear').click ->
