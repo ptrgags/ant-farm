@@ -4,23 +4,23 @@
     Ant.MOVEMENTS = [[0, -1], [-1, 0], [0, 1], [1, 0]];
 
     Ant.COLOR_CODES = {
-      WHITE: '#FFFFFF',
-      BLACK: '#000000',
-      RED: '#FF0000',
-      GREEN: '#00FF00',
-      BLUE: '#0000FF',
-      CYAN: '#00FFFF',
-      YELLOW: '#FFFF00',
-      MAGENTA: '#FF00FF'
+      white: '#FFFFFF',
+      black: '#16001E',
+      red: '#C40B37',
+      green: '#286639',
+      blue: '#275DAD',
+      cyan: '#34D1BF',
+      yellow: '#FABC3C',
+      magenta: '#C34397'
     };
 
-    function Ant(row, col, orientation, grid, rules, default_rules) {
+    function Ant(row, col, orientation, grid, code) {
       this.row = row;
       this.col = col;
       this.orientation = orientation;
       this.grid = grid;
-      this.rules = rules;
-      this.default_rules = default_rules != null ? default_rules : [];
+      this.rules = new AntRules();
+      this.rules.decode(code);
     }
 
     Ant.prototype.turn = function(amount) {
@@ -68,17 +68,20 @@
     };
 
     Ant.prototype.step = function() {
-      var current_color, i, len, ref, ref1, results, rule;
+      var current_color, i, len, results, rule, rule_list;
       current_color = this.get_color();
-      ref1 = (ref = this.rules[current_color]) != null ? ref : this.default_rules;
+      rule_list = this.rules[current_color];
+      if (rule_list.length === 0) {
+        rule_list = this.rules["default"];
+      }
       results = [];
-      for (i = 0, len = ref1.length; i < len; i++) {
-        rule = ref1[i];
-        if (rule === "LEFT") {
+      for (i = 0, len = rule_list.length; i < len; i++) {
+        rule = rule_list[i];
+        if (rule === "left") {
           results.push(this.left());
-        } else if (rule === "RIGHT") {
+        } else if (rule === "right") {
           results.push(this.right());
-        } else if (rule === "MOVE") {
+        } else if (rule === "forward") {
           results.push(this.move());
         } else if (rule in Ant.COLOR_CODES) {
           results.push(this.set_color(rule));

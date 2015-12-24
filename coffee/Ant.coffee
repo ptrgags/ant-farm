@@ -7,16 +7,18 @@ class @Ant
         [1, 0]      #DOWN
     ]
     @COLOR_CODES:
-        WHITE: '#FFFFFF'
-        BLACK: '#000000'
-        RED: '#FF0000'
-        GREEN: '#00FF00'
-        BLUE: '#0000FF'
-        CYAN: '#00FFFF'
-        YELLOW: '#FFFF00'
-        MAGENTA: '#FF00FF'
+        white: '#FFFFFF'
+        black: '#16001E'
+        red: '#C40B37'
+        green: '#286639'
+        blue: '#275DAD'
+        cyan: '#34D1BF'
+        yellow: '#FABC3C'
+        magenta: '#C34397'
 
-    constructor: (@row, @col, @orientation, @grid, @rules, @default_rules=[]) ->
+    constructor: (@row, @col, @orientation, @grid, code) ->
+        @rules = new AntRules()
+        @rules.decode(code)
 
     turn: (amount) ->
         @orientation += amount
@@ -50,12 +52,15 @@ class @Ant
 
     step: ->
         current_color = @get_color()
-        for rule in @rules[current_color] ? @default_rules
-            if rule is "LEFT"
+        rule_list = @rules[current_color]
+        if rule_list.length is 0
+            rule_list = @rules.default
+        for rule in rule_list
+            if rule is "left"
                 @left()
-            else if rule is "RIGHT"
+            else if rule is "right"
                 @right()
-            else if rule is "MOVE"
+            else if rule is "forward"
                 @move()
             else if rule of Ant.COLOR_CODES
                 @set_color(rule)
